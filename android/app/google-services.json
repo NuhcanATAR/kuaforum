@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "991368894686",
+    "project_id": "kuaforumdb",
+    "storage_bucket": "kuaforumdb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:991368894686:android:851184b3593e33630b0a4f",
+        "android_client_info": {
+          "package_name": "com.codenuhcan.kuaforum"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLaZDwvOALd_p9H4Qv7GuXHcN04z9y4a0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
