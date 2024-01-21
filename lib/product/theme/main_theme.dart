@@ -7,21 +7,21 @@ final class CustomColorScheme {
   /// Light color scheme set
   static const lightColorScheme = ColorScheme(
     brightness: Brightness.light, // Parlaklık modu: Light
-    primary: Color.fromARGB(255, 22, 154,
-        123), // Birinci renk (genellikle ana renk): Turkuaz yeşili
+    primary: Color.fromARGB(255, 255, 255,
+        255), // Birinci renk (genellikle ana renk): Turkuaz yeşili
     onPrimary:
         Color(0xFFFFFFFF), // Birinci rengin üzerindeki metin rengi: Beyaz
     primaryContainer: Color.fromARGB(255, 224, 92,
         92), // Birinci renge ait konteyner rengi (örneğin: floating action button): Morlu gri
     onPrimaryContainer: Color(
         0xFF21005D), // Birinci renk konteynerinin üzerindeki metin rengi: Lacivert
-    secondary: Color(0xFF625B71), // İkinci renk: Gri mor
+    secondary: Color.fromARGB(255, 255, 255, 255), // İkinci renk: Gri mor
     onSecondary:
         Color(0xFFFFFFFF), // İkinci rengin üzerindeki metin rengi: Beyaz
     secondaryContainer:
         Color(0xFFE8DEF8), // İkinci renge ait konteyner rengi: Açık morlu pembe
-    onSecondaryContainer: Color(
-        0xFF1D192B), // İkinci renk konteynerinin üzerindeki metin rengi: Koyu mavi-siyah
+    onSecondaryContainer: Color.fromARGB(255, 255, 255,
+        255), // İkinci renk konteynerinin üzerindeki metin rengi: Koyu mavi-siyah
     tertiary: Color(0xFF7D5260), // Üçüncü renk: Açık pembe tonları
     onTertiary:
         Color(0xFFFFFFFF), // Üçüncü rengin üzerindeki metin rengi: Beyaz
@@ -42,13 +42,14 @@ final class CustomColorScheme {
         255, 11, 11, 14), // Arka plan renginin üzerindeki metin rengi: Siyah
     surface: Color.fromARGB(
         255, 224, 92, 92), // Yüzey rengi (örneğin: app bar): Koyu mavi tonları
-    onSurface:
-        Color(0xFF1C1B1F), // Yüzey renginin üzerindeki metin rengi: Siyah
-    surfaceVariant:
-        Color(0xFFE7E0EC), // Yüzeyin varyant rengi: Açık mor tonları
-    onSurfaceVariant: Color(
-        0xFF49454F), // Yüzeyin varyant renginin üzerindeki metin rengi: Gri tonları
-    inverseSurface: Color(0xFF313033), // Ters yüzey rengi: Gri-siyah tonları
+    onSurface: Color.fromARGB(
+        255, 255, 255, 255), // Yüzey renginin üzerindeki metin rengi: Siyah
+    surfaceVariant: Color.fromARGB(
+        255, 255, 255, 255), // Yüzeyin varyant rengi: Açık mor tonları
+    onSurfaceVariant: Color.fromARGB(255, 255, 255,
+        255), // Yüzeyin varyant renginin üzerindeki metin rengi: Gri tonları
+    inverseSurface:
+        Color.fromARGB(255, 44, 29, 72), // Ters yüzey rengi: Gri-siyah tonları
     onInverseSurface: Color(
         0xFFF4EFF4), // Ters yüzey renginin üzerindeki metin rengi: Beyaz tonları
     inversePrimary:

@@ -30,6 +30,6 @@ enum AppLogRegImgsConstant {
   final String value;
   const AppLogRegImgsConstant(this.value);
 
-  String get toPng => "assets/images/logreg_img/$value.png";
-  Image get toImg => Image.asset(toPng);
+  String get toJpg => "assets/images/logreg_img/$value.jpg";
+  Image get toImg => Image.asset(toJpg);
 }
