@@ -65,6 +65,7 @@ dependencies:
   logger: ^2.0.2
   table_calendar: ^3.0.9
   url_launcher: ^6.1.6
+  animate_do: ^3.1.2
   
 
 dev_dependencies:
