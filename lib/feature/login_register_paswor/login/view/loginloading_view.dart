@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kuaforum/feature/main_view/bottommenu_view/bottommenu_view.dart';
+import 'package:kuaforum/feature/main_view/bottommenu_view/view/profilecontrol_view/profilecontrol_view.dart';
 import 'package:kuaforum/product/constants/color_constant.dart';
 import 'package:kuaforum/product/widget/text_widget/body_medium_text.dart';
 import 'package:kuaforum/product/widget/text_widget/label_medium_text.dart';
@@ -18,7 +18,7 @@ class LoginLoadingView extends StatelessWidget {
         Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(
-              builder: (context) => const BottomMenuView(),
+              builder: (context) => const ProfileControlView(),
             ),
             (Route<dynamic> route) => false);
       },
