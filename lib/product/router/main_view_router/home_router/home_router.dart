@@ -85,12 +85,20 @@ class HomeRouterService {
 
   // post detail view router
   void postDetailViewNavigatorRouter(
-      BuildContext context, Map<String, dynamic> data) {
+    BuildContext context,
+    Map<String, dynamic> data,
+    dynamic routerService,
+    dynamic maxWidth,
+    dynamic dynamicHeight,
+  ) {
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => PostDetailView(
           data: data,
+          routerService: routerService,
+          maxWidth: maxWidth,
+          dynamicHeight: dynamicHeight,
         ),
       ),
     );

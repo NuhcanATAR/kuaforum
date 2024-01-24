@@ -157,8 +157,8 @@ class PostListWidget extends StatelessWidget {
                         // comment button
                         GestureDetector(
                           onTap: () {
-                            routerService.postDetailViewNavigatorRouter(
-                                context, data);
+                            routerService.postDetailViewNavigatorRouter(context,
+                                data, routerService, maxWidth, dynamicHeight);
                           },
                           child: Padding(
                             padding: const EdgeInsets.only(top: 10),
