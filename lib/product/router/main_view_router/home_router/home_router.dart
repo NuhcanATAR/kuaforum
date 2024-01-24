@@ -3,8 +3,8 @@ import 'package:kuaforum/feature/main_view/home/view/nofications_view/nofication
 import 'package:kuaforum/feature/main_view/home/view/post_detail_view/post_detail_view.dart';
 import 'package:kuaforum/feature/main_view/home/view/search_view/search_view.dart';
 import 'package:kuaforum/feature/main_view/home/view/service_detail_view/servicedetail_view.dart';
-import 'package:kuaforum/feature/main_view/home/view/servicecategorys_view/servicecateogyrs_view.dart';
-import 'package:kuaforum/feature/main_view/home/view/servicecategorys_view/view/servicelist_view.dart';
+import 'package:kuaforum/feature/main_view/home/view/servicecategorys_view/servicecategorys_view.dart';
+import 'package:kuaforum/feature/main_view/home/view/servicecategorys_view/view/servicelist/servicelist_view.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomeRouterService {

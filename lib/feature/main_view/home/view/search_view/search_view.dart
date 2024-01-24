@@ -43,86 +43,92 @@ class _SearchViewState extends SearchMainBase<SearchView> {
         child: Column(
           children: <Widget>[
             // search
-            Container(
-              margin: const EdgeInsets.only(left: 10, right: 10),
-              decoration: BoxDecoration(
-                color: Colors.grey.withOpacity(0.1),
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(4),
-                ),
-              ),
-              child: TextField(
-                textAlign: TextAlign.left,
-                style: GoogleFonts.nunito(
-                  textStyle: context.general.textTheme.labelMedium?.copyWith(
-                    color: Colors.black54,
-                  ),
-                ),
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  prefixIcon: const Icon(
-                    Icons.search,
-                    color: Colors.grey,
-                    size: 18,
-                  ),
-                  hintText: 'Arama yapınız',
-                  hintStyle: GoogleFonts.nunito(
-                    textStyle: context.general.textTheme.labelMedium?.copyWith(
-                      color: Colors.grey,
-                    ),
-                  ),
-                ),
-                onChanged: (val) {
-                  setState(() {
-                    modelService.input = val;
-                  });
-                },
-              ),
-            ),
+            buildSearchWidget,
             // list
-            Expanded(
-              flex: 3,
-              child: StreamBuilder<QuerySnapshot>(
-                stream: SearchDB.BASICSERVICES.serviceList,
-                builder: (BuildContext context,
-                    AsyncSnapshot<QuerySnapshot> snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const SizedBox();
-                  }
-
-                  return SizedBox(
-                    width: MediaQuery.sizeOf(context).width,
-                    child: ListView.builder(
-                      scrollDirection: Axis.vertical,
-                      itemCount: snapshot.data!.docs.length,
-                      itemBuilder: (context, index) {
-                        var data = snapshot.data!.docs[index].data()
-                            as Map<String, dynamic>;
-
-                        if (data['ACTIVE'] == true &&
-                            data['SERVICETITLE'] != null &&
-                            data['SERVICETITLE']
-                                .toString()
-                                .toLowerCase()
-                                .startsWith(modelService.input.toLowerCase())) {
-                          return ServiceCardWidget(
-                            data: data,
-                            routerService: routerService,
-                            maxWidth: maxWidth,
-                            dynamicHeight: dynamicHeight,
-                          );
-                        }
-
-                        return const Center();
-                      },
-                    ),
-                  );
-                },
-              ),
-            ),
+            buildListWidget,
           ],
         ),
       ),
     );
   }
+
+  // search widget
+  Widget get buildSearchWidget => Container(
+        margin: const EdgeInsets.only(left: 10, right: 10),
+        decoration: BoxDecoration(
+          color: Colors.grey.withOpacity(0.1),
+          borderRadius: const BorderRadius.all(
+            Radius.circular(4),
+          ),
+        ),
+        child: TextField(
+          textAlign: TextAlign.left,
+          style: GoogleFonts.nunito(
+            textStyle: context.general.textTheme.labelMedium?.copyWith(
+              color: Colors.black54,
+            ),
+          ),
+          decoration: InputDecoration(
+            border: InputBorder.none,
+            prefixIcon: const Icon(
+              Icons.search,
+              color: Colors.grey,
+              size: 18,
+            ),
+            hintText: 'Arama yapınız',
+            hintStyle: GoogleFonts.nunito(
+              textStyle: context.general.textTheme.labelMedium?.copyWith(
+                color: Colors.grey,
+              ),
+            ),
+          ),
+          onChanged: (val) {
+            setState(() {
+              modelService.input = val;
+            });
+          },
+        ),
+      );
+
+  // list widget
+  Widget get buildListWidget => Expanded(
+        flex: 3,
+        child: StreamBuilder<QuerySnapshot>(
+          stream: SearchDB.BASICSERVICES.serviceList,
+          builder:
+              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const SizedBox();
+            }
+
+            return SizedBox(
+              width: MediaQuery.sizeOf(context).width,
+              child: ListView.builder(
+                scrollDirection: Axis.vertical,
+                itemCount: snapshot.data!.docs.length,
+                itemBuilder: (context, index) {
+                  var data =
+                      snapshot.data!.docs[index].data() as Map<String, dynamic>;
+
+                  if (data['ACTIVE'] == true &&
+                      data['SERVICETITLE'] != null &&
+                      data['SERVICETITLE']
+                          .toString()
+                          .toLowerCase()
+                          .startsWith(modelService.input.toLowerCase())) {
+                    return ServiceCardWidget(
+                      data: data,
+                      routerService: routerService,
+                      maxWidth: maxWidth,
+                      dynamicHeight: dynamicHeight,
+                    );
+                  }
+
+                  return const Center();
+                },
+              ),
+            );
+          },
+        ),
+      );
 }

@@ -33,3 +33,13 @@ enum AppLogRegImgsConstant {
   String get toJpg => "assets/images/logreg_img/$value.jpg";
   Image get toImg => Image.asset(toJpg);
 }
+
+enum AppErrorImgConstant {
+  errorImg('undraw_Location_search_re_ttoj');
+
+  final String value;
+  const AppErrorImgConstant(this.value);
+
+  String get toPng => "assets/images/error_img/$value.png";
+  Image get toImg => Image.asset(toPng);
+}
