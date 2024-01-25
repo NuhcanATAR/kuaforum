@@ -8,6 +8,7 @@ enum HomeDB {
   ADVERTS,
   SERVICECATEGORY,
   POSTS,
+  COMMENTS,
   BASICSERVICES;
 
   // one time query parameter
@@ -16,6 +17,13 @@ enum HomeDB {
           .collection(name)
           .doc(FirebaseService().authID)
           .get();
+
+  Future<DocumentSnapshot<Map<String, dynamic>>> userRefTable(
+          Map<String, dynamic> data) =>
+      FirebaseFirestore.instance.collection(name).doc(data['USERID']).get();
+
+  CollectionReference get userCommentRef =>
+      FirebaseFirestore.instance.collection(name);
 
   // list query parameter
   Stream<QuerySnapshot> get sliderList => FirebaseFirestore.instance
@@ -35,6 +43,11 @@ enum HomeDB {
       .snapshots();
 
   Stream<QuerySnapshot> get postList => FirebaseFirestore.instance
+      .collection(name)
+      .orderBy("DATE", descending: true)
+      .snapshots();
+
+  Stream<QuerySnapshot> get commentListQuery => FirebaseFirestore.instance
       .collection(name)
       .orderBy("DATE", descending: true)
       .snapshots();

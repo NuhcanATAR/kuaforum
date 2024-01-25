@@ -43,3 +43,14 @@ enum AppErrorImgConstant {
   String get toPng => "assets/images/error_img/$value.png";
   Image get toImg => Image.asset(toPng);
 }
+
+enum ProfileImgIconConstant {
+  userIcon('icons8-user-50'),
+  userIconGrey('icons8-user-grey');
+
+  final String value;
+  const ProfileImgIconConstant(this.value);
+
+  String get toPng => "assets/icon/profile_icon/$value.png";
+  Image get toImg => Image.asset(toPng);
+}

@@ -101,6 +101,9 @@ flutter:
     - assets/images/logreg_img/
     # error
     - assets/images/error_img/
+
+    # profile icon
+    - assets/icon/profile_icon/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

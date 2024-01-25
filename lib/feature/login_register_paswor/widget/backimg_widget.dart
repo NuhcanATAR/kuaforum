@@ -7,13 +7,15 @@ class BackImgWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(
-              AppLogRegImgsConstant.backImg.toJpg,
+      child: Padding(
+        padding: const EdgeInsets.only(top: 55),
+        child: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(
+                AppLogRegImgsConstant.backImg.toJpg,
+              ),
             ),
-            fit: BoxFit.cover,
           ),
         ),
       ),
