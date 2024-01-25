@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartal/kartal.dart';
 import 'package:kuaforum/feature/main_view/home/view/service_detail_view/view/appointmentcreate_view/widget/explanation_widget.dart';
-import 'package:kuaforum/feature/main_view/home/view/service_detail_view/view/appointmentcreate_view/widget/footet_widget.dart';
+import 'package:kuaforum/feature/main_view/home/view/service_detail_view/view/appointmentcreate_view/widget/footer_widget.dart';
 import 'package:kuaforum/feature/main_view/home/view/service_detail_view/view/appointmentcreate_view/widget/paymenttype_widget.dart';
 import 'package:kuaforum/feature/main_view/home/view/service_detail_view/view/appointmentcreate_view/widget/selectdate_widget.dart';
 import 'package:kuaforum/product/bloc/mainview_bloc/appointment_bloc/appointment_cubit/cubit.dart';

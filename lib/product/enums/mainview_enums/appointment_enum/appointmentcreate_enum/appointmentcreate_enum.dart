@@ -11,7 +11,7 @@ enum AppointmentCreateStrings {
 
   successTitleText('Randevunuz Başarıyla Oluşturuldu!'),
   successSubTitleText(
-      'Randevunuz alınmıştı, randevunuzu profil sayfanızdan ve ayarlar bölümünden takip edebilirsiniz.'),
+      'Randevunuz alınmıştır, randevunuzu profil sayfanızdan ve ayarlar bölümünden takip edebilirsiniz.'),
   backBtnText('Anasayfaya Dön');
 
   final String value;

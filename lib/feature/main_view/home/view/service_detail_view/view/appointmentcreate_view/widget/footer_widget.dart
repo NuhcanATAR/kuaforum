@@ -71,16 +71,39 @@ class AppointmentFooterWidget extends StatelessWidget {
                   flex: 2,
                   child: GestureDetector(
                     onTap: () {
-                      appointmentServiceModel.appointmentSaved(
-                        data,
-                        modelService.selectedDate.day,
-                        modelService.selectedDate.month,
-                        modelService.selectedDate.year,
-                        modelService.selectedDate.hour,
-                        modelService.selectedDate.minute,
-                        modelService.selectPaymentTypeValue,
-                        modelService.appointmentExplanationController,
-                      );
+                      if (modelService.selectedDate.hour == 0 ||
+                          modelService.selectedDate.hour == 1 ||
+                          modelService.selectedDate.hour == 2 ||
+                          modelService.selectedDate.hour == 3 ||
+                          modelService.selectedDate.hour == 4 ||
+                          modelService.selectedDate.hour == 5 ||
+                          modelService.selectedDate.hour == 6 ||
+                          modelService.selectedDate.hour == 7 ||
+                          modelService.selectedDate.hour == 8 ||
+                          modelService.selectedDate.hour == 21 ||
+                          modelService.selectedDate.hour == 22 ||
+                          modelService.selectedDate.hour == 23) {
+                        final snackBar = SnackBar(
+                          content: const Text("Saat aralığınız uygun değil!"),
+                          action: SnackBarAction(
+                            label: "Tamam",
+                            onPressed: () {},
+                          ),
+                          duration: const Duration(seconds: 4),
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      } else {
+                        appointmentServiceModel.appointmentSaved(
+                          data,
+                          modelService.selectedDate.day,
+                          modelService.selectedDate.month,
+                          modelService.selectedDate.year,
+                          modelService.selectedDate.hour,
+                          modelService.selectedDate.minute,
+                          modelService.selectPaymentTypeValue,
+                          modelService.appointmentExplanationController,
+                        );
+                      }
                     },
                     child: SizedBox(
                       width: maxWidth,

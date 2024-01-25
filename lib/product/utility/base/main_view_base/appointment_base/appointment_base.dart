@@ -17,20 +17,23 @@ abstract class MainAppointmentBase<T extends StatefulWidget> extends State<T> {
   late final maxWidth = ViewSizeModelExtension(context).mediaSize.width;
   late final maxHeight = ViewSizeModelExtension(context).mediaSize.height;
 
+  // appointment select date
   Future<void> selectAppointmentDate(BuildContext context) async {
+    DateTime now = DateTime.now();
+    DateTime minTime = DateTime(modelService.selectedDate.year,
+        modelService.selectedDate.month, now.day, 9, 0); // Sabah 9:00
+
     DatePicker.showDateTimePicker(
       context,
       showTitleActions: true,
-      minTime: DateTime(2020, 1, 1),
-      maxTime: DateTime(2030, 12, 31),
-      onChanged: (date) {
-        // onChanged fonksiyonu düzeltilmiş hali
-        print('change $date');
-      },
+      minTime: minTime,
+      maxTime: now.add(const Duration(days: 30)),
       onConfirm: (date) {
-        // onConfirm fonksiyonu düzeltilmiş hali
+        DateTime selectedDateTime = DateTime(
+            date.year, date.month, date.day, date.hour, date.minute, 9, 0);
+
         setState(() {
-          modelService.selectedDate = date;
+          modelService.selectedDate = selectedDateTime;
         });
       },
       currentTime: DateTime.now(),
