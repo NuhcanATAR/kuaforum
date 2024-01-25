@@ -9,11 +9,13 @@ class FooterWidget extends StatelessWidget {
       {required this.data,
       required this.maxWidth,
       required this.dynamicHeight,
+      required this.routerService,
       super.key});
 
   final Map<String, dynamic> data;
   final dynamic maxWidth;
   final dynamic dynamicHeight;
+  final dynamic routerService;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +42,10 @@ class FooterWidget extends StatelessWidget {
             Expanded(
               flex: 2,
               child: GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  routerService.appointmentCreateViewNavigatorRouter(
+                      context, data);
+                },
                 child: SizedBox(
                   width: maxWidth,
                   height: dynamicHeight(0.06),

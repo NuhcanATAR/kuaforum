@@ -66,6 +66,7 @@ dependencies:
   table_calendar: ^3.0.9
   url_launcher: ^6.1.6
   animate_do: ^3.1.2
+  flutter_datetime_picker_plus: ^2.1.0
   
 
 dev_dependencies:
@@ -104,6 +105,9 @@ flutter:
 
     # profile icon
     - assets/icon/profile_icon/
+
+    # appointment icon
+    - assets/icon/appointment_icon/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

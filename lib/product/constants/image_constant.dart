@@ -54,3 +54,13 @@ enum ProfileImgIconConstant {
   String get toPng => "assets/icon/profile_icon/$value.png";
   Image get toImg => Image.asset(toPng);
 }
+
+enum AppointmentIcon {
+  successIcon('icons8-success-144');
+
+  final String value;
+  const AppointmentIcon(this.value);
+
+  String get toPng => "assets/icon/appointment_icon/$value.png";
+  Image get toImg => Image.asset(toPng);
+}

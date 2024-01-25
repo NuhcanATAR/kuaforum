@@ -187,5 +187,6 @@ class _ServiceDetailViewState extends MainServiceBase<ServiceDetailView> {
         data: widget.data,
         maxWidth: maxWidth,
         dynamicHeight: dynamicHeight,
+        routerService: routerService,
       );
 }
