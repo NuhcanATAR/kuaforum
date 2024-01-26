@@ -32,6 +32,8 @@ class AppointmentMainCubit extends Cubit<AppointmentState> {
         "EXPLANATION": explanation.text,
         "APPOINTMENTSTATUS": false,
         "REJECTSTATUS": false,
+        "UPDATESTATUS": false,
+        "COMPLETIONSTATUS": false,
         "DATE": FieldValue.serverTimestamp(),
       }).then((value) {
         String docID = value.id;
