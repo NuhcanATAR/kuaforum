@@ -48,12 +48,10 @@ class CommentListWidget extends StatelessWidget with PostBlocMixin {
                 children: snapshot.data!.docs.map((DocumentSnapshot document) {
                   Map<String, dynamic> index =
                       document.data()! as Map<String, dynamic>;
-                  if (index['POSTID'] != data['ID']) {
-                    return const SizedBox();
-                  } else {
-                    return buildCommentCardWidget(
-                        context, index, postCubitService);
-                  }
+                  return (index['POSTID'] != data['ID'])
+                      ? const SizedBox()
+                      : buildCommentCardWidget(
+                          context, index, postCubitService);
                 }).toList(),
               );
             } else {
