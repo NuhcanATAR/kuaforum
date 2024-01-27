@@ -56,7 +56,10 @@ enum ProfileImgIconConstant {
 }
 
 enum AppointmentIcon {
-  successIcon('icons8-success-144');
+  successIcon('icons8-success-144'),
+  successIcon2('success'),
+  cancelIcon('cancel'),
+  updateIcon('update');
 
   final String value;
   const AppointmentIcon(this.value);

@@ -45,19 +45,6 @@ class _BottomMenuViewState extends State<BottomMenuView> {
             ),
             NavigationDestination(
               selectedIcon: Icon(
-                Icons.settings,
-                color: ColorBackgroundConstant.redDarker,
-                size: 21,
-              ),
-              icon: const Icon(
-                Icons.settings_outlined,
-                color: Colors.grey,
-                size: 21,
-              ),
-              label: '',
-            ),
-            NavigationDestination(
-              selectedIcon: Icon(
                 Icons.home,
                 color: ColorBackgroundConstant.redDarker,
                 size: 21,

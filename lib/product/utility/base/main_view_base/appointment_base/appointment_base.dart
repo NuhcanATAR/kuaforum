@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart';
 import 'package:kuaforum/product/model/main_view_model/appointmentcreate_model/appointmentcreate_model.dart';
+import 'package:kuaforum/product/router/main_view_router/appointment_router/appointment_router.dart';
 import 'package:kuaforum/product/router/main_view_router/appointmentcreate_router/appointmentcreate_router.dart';
 import '../../../../../product/extension/view_extension.dart';
 
@@ -10,6 +11,7 @@ abstract class MainAppointmentBase<T extends StatefulWidget> extends State<T> {
   // router service
   AppointmentCreateRouterService routerService =
       AppointmentCreateRouterService();
+  AppointmentRouterService routerMainService = AppointmentRouterService();
   // screens size
   double dynamicWidth(double value) => maxWidth * value;
   double dynamicHeight(double value) => maxHeight * value;

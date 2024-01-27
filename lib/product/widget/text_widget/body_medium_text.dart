@@ -44,3 +44,25 @@ class BodyMediumBlackBoldText extends StatelessWidget {
     );
   }
 }
+
+class BodyMediumWhiteBoldText extends StatelessWidget {
+  const BodyMediumWhiteBoldText(
+      {required this.text, required this.textAlign, super.key});
+
+  final String text;
+  final dynamic textAlign;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      textAlign: textAlign,
+      style: GoogleFonts.nunito(
+        textStyle: context.general.textTheme.bodyMedium!.copyWith(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
+  }
+}
