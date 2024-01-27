@@ -4,10 +4,6 @@ class AuthProfileInitial extends AuthProfileState {}
 
 class AuthProfileLoading extends AuthProfileState {}
 
-class AuthProfileError extends AuthProfileState {
-  final String errorMessage;
-
-  AuthProfileError(this.errorMessage);
-}
+class AuthProfileError extends AuthProfileState {}
 
 class AuthSuccessProfile extends AuthProfileState {}

@@ -18,7 +18,7 @@ class ServiceDurationWidget extends StatelessWidget {
         child: Row(
           children: <Widget>[
             Icon(
-              Icons.date_range,
+              Icons.update,
               color: ColorBackgroundConstant.redDarker,
               size: 18,
             ),
@@ -29,7 +29,7 @@ class ServiceDurationWidget extends StatelessWidget {
                 ),
                 child: LabelMediumBlackText(
                   text:
-                      "${data['SERVICEDURATION']} ${data['SERVICEDURATIONTYPE']}",
+                      "Hizmet Süresi: ${data['SERVICEDURATION']} ${data['SERVICEDURATIONTYPE']}",
                   textAlign: TextAlign.left,
                 ),
               ),

@@ -57,33 +57,7 @@ class _AppointmentDetailViewState
             ),
           ),
           body: BlocConsumer<AppointmentMainCubit, AppointmentState>(
-            listener: (context, state) {
-              if (state is EvaluationSavedSuccess) {
-                final snackBar = SnackBar(
-                  content: const Text("Değerlendirme alındı"),
-                  action: SnackBarAction(
-                    label: "Tamam",
-                    onPressed: () {},
-                  ),
-                  duration: const Duration(
-                    seconds: 4,
-                  ),
-                );
-                ScaffoldMessenger.of(context).showSnackBar(snackBar);
-              } else if (state is EvaluationSavedError) {
-                final snackBar = SnackBar(
-                  content: const Text("Hata oluştu"),
-                  action: SnackBarAction(
-                    label: "Tamam",
-                    onPressed: () {},
-                  ),
-                  duration: const Duration(
-                    seconds: 4,
-                  ),
-                );
-                ScaffoldMessenger.of(context).showSnackBar(snackBar);
-              }
-            },
+            listener: evaluationCreateListenerBloc,
             builder: (context, state) {
               final appointmentService =
                   BlocProvider.of<AppointmentMainCubit>(context);

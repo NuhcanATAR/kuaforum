@@ -4,19 +4,18 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kuaforum/product/constants/color_constant.dart';
+import 'package:kuaforum/product/mixin/loginbloc_mixin/loginbloc_mixin.dart';
 import 'package:kuaforum/product/model/log_reg_pass_model/login_model/login_model.dart';
-import 'package:kuaforum/product/router/log_reg_pass_router/login_router/login_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../../product/extension/view_extension.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 
-abstract class MainLoginBase<T extends StatefulWidget> extends State<T> {
+abstract class MainLoginBase<T extends StatefulWidget> extends State<T>
+    with LoginBlocMixin {
   // model service
   LoginServiceModel modelService = LoginServiceModel();
 
-  // router service
-  LoginRouterService routerService = LoginRouterService();
   // screens size
   double dynamicWidth(double value) => maxWidth * value;
   double dynamicHeight(double value) => maxHeight * value;

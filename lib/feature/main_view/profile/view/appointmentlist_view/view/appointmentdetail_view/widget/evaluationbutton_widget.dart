@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:kuaforum/product/constants/color_constant.dart';
 import 'package:kuaforum/product/utility/database/main_view_db/appointment_db/appointment_db.dart';
+import 'package:kuaforum/product/utility/service/firebase_service.dart';
 import 'package:kuaforum/product/widget/text_widget/label_medium_text.dart';
 
 class EvaluationButtonWidget extends StatelessWidget {
@@ -22,7 +23,11 @@ class EvaluationButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<DocumentSnapshot>(
-      future: AppointmentDB.APPOINTMENTS.appointmentRef.doc(data['ID']).get(),
+      future: AppointmentDB.APPOINTMENTS.appointmentRef
+          .doc(FirebaseService().authID)
+          .collection("LIST")
+          .doc(data['ID'])
+          .get(),
       builder:
           (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
         if (snapshot.hasError) {

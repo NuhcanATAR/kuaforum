@@ -1,19 +1,20 @@
 enum AppointmentListStrings {
-  errorListTitleText(''),
-  errorListSubTitleText(''),
+  errorListTitleText('Randevularınız Listelenemedi!'),
+  errorListSubTitleText(
+      'Randevularınız yüklenirken hata oluştu, daha sonra tekrar deneyiniz!'),
 
-  loadingListTitleText(''),
-  loadingListSubTitleText(''),
+  loadingListTitleText('Randevularınız Yükleniyor'),
+  loadingListSubTitleText('Lütfen Bekleyiniz...'),
 
-  noListTitleText(''),
-  noListSubTitleText(''),
+  noListTitleText('Henüz Randevu Oluşturmadınız'),
+  noListSubTitleText(
+      'Henüz Randevu Oluşturmadınız, isterseniz randevu oluşturmaya başlayabilirsiniz.'),
 
   rejetTitleText('Randevunuz İptal Edilmiştir'),
   rejectSubTitleText('Oluşturmuş olduğunu randevu iptal edilmiştir.'),
 
   dateUpdateTitleText('Randevu Tarihi Güncellendi'),
-  dateUpdateSubTitleText(
-      'Randevu Tarihiniz yönetici tarafından değiştirildi değişikliği onaylıyormusunuz?'),
+  dateUpdateSubTitleText('Randevu Tarihiniz yönetici tarafından değiştirildi.'),
 
   confirmationTitleText('Randevunuz Onaylandı'),
   confirmationSubTitleText('Randevunuz yönetici tarafından onaylandı!'),

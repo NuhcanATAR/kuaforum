@@ -21,7 +21,7 @@ class AuthUpdProfileCubit extends Cubit<AuthProfileState> {
 
       emit(AuthSuccessProfile());
     } catch (e) {
-      emit(AuthProfileError('Ürün eklenirken bir hata oluştu.'));
+      emit(AuthProfileError());
     }
   }
 }

@@ -26,7 +26,7 @@ class PostMainCubit extends Cubit<PostState> {
 
       emit(PostSuccess());
     } catch (e) {
-      emit(PostError('Hata oluştu, Tekrar Deneyiniz!'));
+      emit(PostError());
     }
   }
 
@@ -35,7 +35,7 @@ class PostMainCubit extends Cubit<PostState> {
       await HomeDB.COMMENTS.userCommentRef.doc(data['ID']).delete();
       emit(PostCommentRemoveSuccess());
     } catch (e) {
-      emit(PostCommentRemoveError('Hata oluştu, Tekrar deneyiniz!'));
+      emit(PostCommentRemoveError());
     }
   }
 }

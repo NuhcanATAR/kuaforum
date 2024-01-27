@@ -45,23 +45,7 @@ class _SelectCityViewState extends MainCompleteProfileBase<SelectCityView> {
   // bloc main body
   Widget get buildBlocMainBodyWiget =>
       BlocConsumer<AuthUpdProfileCubit, AuthProfileState>(
-        listener: (context, state) {
-          if (state is AuthSuccessProfile) {
-            routerService.loginLoadingViewNavigatorRouter(context);
-          } else if (state is AuthProfileError) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content:
-                    const Text("Hata Oluştu, Daha Sonra Tekrar Deneyiniz."),
-                action: SnackBarAction(
-                  label: "Tamam",
-                  onPressed: () {},
-                ),
-                duration: const Duration(seconds: 4),
-              ),
-            );
-          }
-        },
+        listener: profileAuthListeneBloc,
         builder: (context, state) {
           final AuthUpdProfileCubit productCubit =
               BlocProvider.of<AuthUpdProfileCubit>(context);

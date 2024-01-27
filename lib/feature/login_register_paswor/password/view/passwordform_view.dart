@@ -8,8 +8,9 @@ import 'package:kuaforum/product/bloc/log_reg_pass_bloc/password_bloc/password_c
 import 'package:kuaforum/product/bloc/log_reg_pass_bloc/password_bloc/password_state/password_state.dart';
 
 import 'package:kuaforum/product/enums/logregpass_enums/password_enums.dart';
+import 'package:kuaforum/product/mixin/passwordbloc_mixin/passwordbloc_mixin.dart';
 
-class PasswordFormView extends StatelessWidget {
+class PasswordFormView extends StatelessWidget with PasswordBlocMixin {
   const PasswordFormView(
       {required this.modelService,
       required this.maxWidth,
@@ -29,16 +30,7 @@ class PasswordFormView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: BlocConsumer<ResetPasswordCubit, ResetPasswordState>(
-        listener: (context, state) {
-          if (state is ResetPasswordLoading) {
-          } else if (state is ResetPasswordError) {
-            routerService.passwordUserErrorDialog(
-                context, modelService.emailController);
-          } else if (state is ResetPasswordSuccess) {
-            routerService.passwordUserSuccessfulDialog(
-                context, modelService.emailController);
-          }
-        },
+        listener: userPasswordResetListeneBloc,
         builder: (context, state) {
           return Form(
             key: modelService.formResPassKey,

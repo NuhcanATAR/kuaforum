@@ -66,33 +66,7 @@ class _NameSurnameUpdateViewState
   // main body
   Widget get buildMainBodyWidget =>
       BlocConsumer<MainProfileCubit, MainProfileState>(
-        listener: (context, state) {
-          if (state is ProfileNameSurnameUpdateSuccess) {
-            final snackBar = SnackBar(
-              content: const Text("Ad Soyad Güncellendi"),
-              action: SnackBarAction(
-                label: "Tamam",
-                onPressed: () {},
-              ),
-              duration: const Duration(
-                seconds: 4,
-              ),
-            );
-            ScaffoldMessenger.of(context).showSnackBar(snackBar);
-          } else if (state is ProfileNameSurnameUpdateError) {
-            final snackBar = SnackBar(
-              content: const Text("Hata oluştu, Tekrar Deneyiniz!"),
-              action: SnackBarAction(
-                label: "Tamam",
-                onPressed: () {},
-              ),
-              duration: const Duration(
-                seconds: 4,
-              ),
-            );
-            ScaffoldMessenger.of(context).showSnackBar(snackBar);
-          }
-        },
+        listener: profileNameSurnameUpdateListenerBloc,
         builder: (context, state) {
           final profileCubitService =
               BlocProvider.of<MainProfileCubit>(context);

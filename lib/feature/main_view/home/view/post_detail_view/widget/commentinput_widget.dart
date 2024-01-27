@@ -6,8 +6,9 @@ import 'package:kuaforum/product/bloc/mainview_bloc/post_bloc/post_cubit/cubit.d
 import 'package:kuaforum/product/bloc/mainview_bloc/post_bloc/post_state/state.dart';
 import 'package:kuaforum/product/constants/color_constant.dart';
 import 'package:kuaforum/product/constants/image_constant.dart';
+import 'package:kuaforum/product/mixin/postbloc_mixin/postbloc_mixin.dart';
 
-class CommentInputWidget extends StatelessWidget {
+class CommentInputWidget extends StatelessWidget with PostBlocMixin {
   const CommentInputWidget(
       {required this.postModelService, required this.data, super.key});
 
@@ -17,29 +18,7 @@ class CommentInputWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<PostMainCubit, PostState>(
-      listener: (context, state) {
-        if (state is PostSuccess) {
-          final snackBar = SnackBar(
-            content: const Text("Yorum paylaşıldı!"),
-            action: SnackBarAction(
-              label: "Tamam",
-              onPressed: () {},
-            ),
-            duration: const Duration(seconds: 4),
-          );
-          ScaffoldMessenger.of(context).showSnackBar(snackBar);
-        } else if (state is PostError) {
-          final snackBar = SnackBar(
-            content: const Text("Hata oluştu, Tekrar deneyiniz!"),
-            action: SnackBarAction(
-              label: "Tamam",
-              onPressed: () {},
-            ),
-            duration: const Duration(seconds: 4),
-          );
-          ScaffoldMessenger.of(context).showSnackBar(snackBar);
-        }
-      },
+      listener: postCommentAddListenerBloc,
       builder: (context, state) {
         final PostMainCubit postCubitService =
             BlocProvider.of<PostMainCubit>(context);

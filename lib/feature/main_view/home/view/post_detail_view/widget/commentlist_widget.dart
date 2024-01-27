@@ -4,11 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kuaforum/product/bloc/mainview_bloc/post_bloc/post_cubit/cubit.dart';
 import 'package:kuaforum/product/bloc/mainview_bloc/post_bloc/post_state/state.dart';
 import 'package:kuaforum/product/constants/image_constant.dart';
+import 'package:kuaforum/product/mixin/postbloc_mixin/postbloc_mixin.dart';
 import 'package:kuaforum/product/utility/database/main_view_db/home_db/home_db.dart';
 import 'package:kuaforum/product/utility/service/firebase_service.dart';
 import 'package:kuaforum/product/widget/text_widget/label_medium_text.dart';
 
-class CommentListWidget extends StatelessWidget {
+class CommentListWidget extends StatelessWidget with PostBlocMixin {
   const CommentListWidget(
       {required this.data,
       required this.maxWidth,
@@ -24,29 +25,7 @@ class CommentListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<PostMainCubit, PostState>(
-      listener: (context, state) {
-        if (state is PostCommentRemoveSuccess) {
-          final snackBar = SnackBar(
-            content: const Text("Yorum Kaldırıldı"),
-            action: SnackBarAction(
-              label: "Tamam",
-              onPressed: () {},
-            ),
-            duration: const Duration(seconds: 4),
-          );
-          ScaffoldMessenger.of(context).showSnackBar(snackBar);
-        } else if (state is PostCommentRemoveError) {
-          final snackBar = SnackBar(
-            content: const Text("Hata oluştu, Tekrar deneyiniz!"),
-            action: SnackBarAction(
-              label: "Tamam",
-              onPressed: () {},
-            ),
-            duration: const Duration(seconds: 4),
-          );
-          ScaffoldMessenger.of(context).showSnackBar(snackBar);
-        }
-      },
+      listener: postCommentDeleteListenerBloc,
       builder: (context, state) {
         final PostMainCubit postCubitService =
             BlocProvider.of<PostMainCubit>(context);

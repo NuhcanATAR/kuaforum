@@ -61,33 +61,7 @@ class _PhoneNumberUpdateViewState
   // main body widget
   Widget get buildMainBodyWidget =>
       BlocConsumer<MainProfileCubit, MainProfileState>(
-        listener: (context, state) {
-          if (state is ProfilePhoneNumberUpdateSuccess) {
-            final snackBar = SnackBar(
-              content: const Text("Telefon Numaranız Güncellendi"),
-              action: SnackBarAction(
-                label: "Tamam",
-                onPressed: () {},
-              ),
-              duration: const Duration(
-                seconds: 4,
-              ),
-            );
-            ScaffoldMessenger.of(context).showSnackBar(snackBar);
-          } else if (state is ProfilePhoneNumberUpdateError) {
-            final snackBar = SnackBar(
-              content: const Text("Hata oluştu, Tekrar Deneyiniz!"),
-              action: SnackBarAction(
-                label: "Tamam",
-                onPressed: () {},
-              ),
-              duration: const Duration(
-                seconds: 4,
-              ),
-            );
-            ScaffoldMessenger.of(context).showSnackBar(snackBar);
-          }
-        },
+        listener: profilePhoneNumberUpdateListenerBloc,
         builder: (context, state) {
           final profileCubitService =
               BlocProvider.of<MainProfileCubit>(context);

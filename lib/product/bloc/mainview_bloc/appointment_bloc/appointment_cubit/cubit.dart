@@ -18,7 +18,10 @@ class AppointmentMainCubit extends Cubit<AppointmentState> {
       String selectPaymentType,
       TextEditingController explanation) async {
     try {
-      await AppointmentDB.APPOINTMENTS.appointmentRef.add({
+      await AppointmentDB.APPOINTMENTS.appointmentRef
+          .doc(FirebaseService().authID)
+          .collection("LIST")
+          .add({
         "ID": null,
         "USERID": FirebaseService().authID,
         "BASICSERVICESID": data['ID'],

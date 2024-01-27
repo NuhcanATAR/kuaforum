@@ -12,9 +12,10 @@ import 'package:kuaforum/product/bloc/log_reg_pass_bloc/register_bloc/register_c
 import 'package:kuaforum/product/bloc/log_reg_pass_bloc/register_bloc/register_state/register_state.dart';
 
 import 'package:kuaforum/product/enums/logregpass_enums/register_enums.dart';
+import 'package:kuaforum/product/mixin/registerbloc_mixin/registerbloc_mixin.dart';
 import 'package:kuaforum/product/widget/text_widget/label_medium_text.dart';
 
-class RegisterForm extends StatelessWidget {
+class RegisterForm extends StatelessWidget with RegisterBlocMixin {
   const RegisterForm(
       {required this.maxWidth,
       required this.dynamicHeight,
@@ -39,31 +40,7 @@ class RegisterForm extends StatelessWidget {
   // main body widget
   Widget buildRegisterBodyWidget(context, authCubit) =>
       BlocConsumer<AuthSignUpCubit, AuthState>(
-        listener: (context, state) {
-          if (state is AuthLoading) {
-          } else if (state is AuthError) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text("Hata Oluştu, Tekrar deneyiniz!"),
-                backgroundColor: Colors.red,
-              ),
-            );
-          } else if (state is AuthSuccess) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('Hesabınız Başarıyla Oluşturuldu'),
-                backgroundColor: Colors.green,
-              ),
-            );
-          } else if (state is AuthEmailAlReadyInUse) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('E-mail Adresi Kullanımda'),
-                backgroundColor: Colors.redAccent,
-              ),
-            );
-          }
-        },
+        listener: registerUserListenerBloc,
         builder: (context, state) {
           return Form(
             key: modelService.formRegisterKey,

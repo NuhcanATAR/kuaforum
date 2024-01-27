@@ -57,33 +57,7 @@ class _CityUpdateViewState extends MainProfileBase<CityUpdateView> {
 
   Widget get buildMainBodyWidget =>
       BlocConsumer<MainProfileCubit, MainProfileState>(
-        listener: (context, state) {
-          if (state is ProfileCityUpdateSuccess) {
-            final snackBar = SnackBar(
-              content: const Text("Şehir Bilginiz Güncellendi"),
-              action: SnackBarAction(
-                label: "Tamam",
-                onPressed: () {},
-              ),
-              duration: const Duration(
-                seconds: 4,
-              ),
-            );
-            ScaffoldMessenger.of(context).showSnackBar(snackBar);
-          } else if (state is ProfileCityUpdateError) {
-            final snackBar = SnackBar(
-              content: const Text("Hata oluştu, Tekrar Deneyiniz!"),
-              action: SnackBarAction(
-                label: "Tamam",
-                onPressed: () {},
-              ),
-              duration: const Duration(
-                seconds: 4,
-              ),
-            );
-            ScaffoldMessenger.of(context).showSnackBar(snackBar);
-          }
-        },
+        listener: profileCityLocationUpdateListenerBloc,
         builder: (context, state) {
           final profileCubitService =
               BlocProvider.of<MainProfileCubit>(context);

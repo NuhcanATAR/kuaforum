@@ -57,44 +57,103 @@ class SliderBannerListWidget extends StatelessWidget {
   }
 
   // banner card
-  Widget buildBannerCard(context, data) => GestureDetector(
-        onTap: () {
-          routerService.sliderControlRouter(context, data);
-        },
-        child: Card(
-          color: Colors.grey.withOpacity(0.2),
-          child: SizedBox(
-            width: maxWidth,
-            child: CachedNetworkImage(
-              imageUrl: data['IMG'].toString(),
-              imageBuilder: (context, imageProvider) => Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: imageProvider,
-                    fit: BoxFit.cover,
+  Widget buildBannerCard(context, data) => data['URLACTIVE'] == true
+      ? GestureDetector(
+          onTap: () {
+            routerService.sliderWebRouter(context, data);
+          },
+          child: Card(
+            color: Colors.grey.withOpacity(0.2),
+            child: SizedBox(
+              width: maxWidth,
+              child: CachedNetworkImage(
+                imageUrl: data['IMG'].toString(),
+                imageBuilder: (context, imageProvider) => Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: imageProvider,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
-              ),
-              placeholder: (context, url) => Container(
-                decoration: BoxDecoration(
-                  color: Colors.grey.withOpacity(0.2),
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(4),
+                placeholder: (context, url) => Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey.withOpacity(0.2),
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(4),
+                    ),
                   ),
                 ),
-              ),
-              errorWidget: (context, url, error) => Container(
-                decoration: BoxDecoration(
-                  color: Colors.grey.withOpacity(0.2),
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(4),
+                errorWidget: (context, url, error) => Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey.withOpacity(0.2),
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(4),
+                    ),
                   ),
                 ),
               ),
             ),
           ),
-        ),
-      );
+        )
+      : FutureBuilder<DocumentSnapshot>(
+          future: HomeDB.BASICSERVICES.basicServiceRef(data),
+          builder:
+              (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+            if (snapshot.hasError) {
+              return const SizedBox();
+            }
+
+            if (snapshot.hasData && !snapshot.data!.exists) {
+              return const SizedBox();
+            }
+
+            if (snapshot.connectionState == ConnectionState.done) {
+              Map<String, dynamic> index =
+                  snapshot.data!.data() as Map<String, dynamic>;
+              return GestureDetector(
+                onTap: () {
+                  routerService.serviceDetailViewNavigator(context, index);
+                },
+                child: Card(
+                  color: Colors.grey.withOpacity(0.2),
+                  child: SizedBox(
+                    width: maxWidth,
+                    child: CachedNetworkImage(
+                      imageUrl: data['IMG'].toString(),
+                      imageBuilder: (context, imageProvider) => Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: imageProvider,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      placeholder: (context, url) => Container(
+                        decoration: BoxDecoration(
+                          color: Colors.grey.withOpacity(0.2),
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(4),
+                          ),
+                        ),
+                      ),
+                      errorWidget: (context, url, error) => Container(
+                        decoration: BoxDecoration(
+                          color: Colors.grey.withOpacity(0.2),
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(4),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            } else {
+              return const SizedBox();
+            }
+          },
+        );
 
   // empty card
   Widget get buildEmptyCardWidget => Card(

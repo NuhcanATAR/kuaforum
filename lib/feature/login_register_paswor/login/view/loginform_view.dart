@@ -28,47 +28,7 @@ class _LoginFormViewState extends MainLoginBase<LoginFormView> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: BlocConsumer<LoginCubit, LoginState>(
-        listener: (context, state) {
-          if (state is LoginLoading) {
-          } else if (state is LoginError) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(state.errorMessage),
-                backgroundColor: Colors.red,
-              ),
-            );
-          } else if (state is LoginSuccess) {
-            routerService.loginLoadingViewRouter(context);
-          } else if (state is LoginUserNotFound) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(state.errorMessage),
-                backgroundColor: Colors.red,
-              ),
-            );
-          } else if (state is LoginWrongPassword) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(state.errorMessage),
-                backgroundColor: Colors.red,
-              ),
-            );
-          } else if (state is LoginInvalidEmail) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(state.errorMessage),
-                backgroundColor: Colors.red,
-              ),
-            );
-          } else if (state is LoginTooManyRequest) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(state.errorMessage),
-                backgroundColor: Colors.red,
-              ),
-            );
-          }
-        },
+        listener: loginListenerBloc,
         builder: (context, state) {
           return Form(
             key: modelService.formLoginKey,

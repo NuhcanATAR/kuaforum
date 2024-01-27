@@ -31,21 +31,9 @@ class HomeRouterService {
   }
 
   // slider card router control
-  void sliderControlRouter(
-      BuildContext context, Map<String, dynamic> data) async {
-    if (data['URLACTIVE'] == true) {
-      if (!await launchUrl(Uri.parse(data['URL'].toString()))) {
-        throw Exception("Url Bulunamadı!");
-      }
-    } else {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => ServiceDetailView(
-            data: data,
-          ),
-        ),
-      );
+  void sliderWebRouter(BuildContext context, Map<String, dynamic> data) async {
+    if (!await launchUrl(Uri.parse(data['URL'].toString()))) {
+      throw Exception("Url Bulunamadı!");
     }
   }
 

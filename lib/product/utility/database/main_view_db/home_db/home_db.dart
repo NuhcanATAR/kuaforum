@@ -25,6 +25,13 @@ enum HomeDB {
   CollectionReference get userCommentRef =>
       FirebaseFirestore.instance.collection(name);
 
+  Future<DocumentSnapshot<Map<String, dynamic>>> basicServiceRef(
+          Map<String, dynamic> data) =>
+      FirebaseFirestore.instance
+          .collection(name)
+          .doc(data['BASICSERVICESID'])
+          .get();
+
   // list query parameter
   Stream<QuerySnapshot> get sliderList => FirebaseFirestore.instance
       .collection(name)

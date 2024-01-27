@@ -9,5 +9,5 @@ class BottomMenuModelService {
     const HomeView(),
     const ProfileView(),
   ];
-  int selectedViewIndex = 0;
+  int selectedViewIndex = 1;
 }

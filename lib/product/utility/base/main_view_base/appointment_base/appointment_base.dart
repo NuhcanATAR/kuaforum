@@ -4,13 +4,15 @@ import 'package:data_connection_checker_nulls/data_connection_checker_nulls.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart';
 import 'package:kuaforum/feature/main_view/connectionerror_view/connectionerror_view.dart';
+import 'package:kuaforum/product/mixin/appointmentbloc_mixin/appointmentbloc_mixin.dart';
 import 'package:kuaforum/product/model/main_view_model/appointmentcreate_model/appointmentcreate_model.dart';
 import 'package:kuaforum/product/router/main_view_router/appointment_router/appointment_router.dart';
 import 'package:kuaforum/product/router/main_view_router/appointmentcreate_router/appointmentcreate_router.dart';
 import 'package:logger/logger.dart';
 import '../../../../../product/extension/view_extension.dart';
 
-abstract class MainAppointmentBase<T extends StatefulWidget> extends State<T> {
+abstract class MainAppointmentBase<T extends StatefulWidget> extends State<T>
+    with AppointmentBlocMixin {
   // model service
   AppointmentCreateModelService modelService = AppointmentCreateModelService();
   // router service

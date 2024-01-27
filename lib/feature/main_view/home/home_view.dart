@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:kuaforum/feature/main_view/home/widget/popularityservicelist_widget.dart';
 import 'package:kuaforum/feature/main_view/home/widget/postlist_widget.dart';
@@ -7,6 +8,7 @@ import 'package:kuaforum/feature/main_view/home/widget/sliderbannerlist_widget.d
 import 'package:kuaforum/product/constants/color_constant.dart';
 import 'package:kuaforum/product/enums/mainview_enums/home_enum/home_enum.dart';
 import 'package:kuaforum/product/utility/base/main_view_base/home_base/home_base.dart';
+import 'package:kuaforum/product/utility/database/main_view_db/home_db/home_db.dart';
 import 'package:kuaforum/product/widget/text_widget/label_medium_text.dart';
 
 class HomeView extends StatefulWidget {
@@ -59,12 +61,33 @@ class _HomeViewState extends MainHomeBase<HomeView> {
                       ),
 
                       // name surname
-                      SizedBox(
-                        width: maxWidth,
-                        child: const LabelMediumBlackBoldText(
-                          text: "Nuhcan ATAR",
-                          textAlign: TextAlign.left,
-                        ),
+                      FutureBuilder<DocumentSnapshot>(
+                        future: HomeDB.USERS.userRef,
+                        builder: (BuildContext context,
+                            AsyncSnapshot<DocumentSnapshot> snapshot) {
+                          if (snapshot.hasError) {
+                            return const SizedBox();
+                          }
+
+                          if (snapshot.hasData && !snapshot.data!.exists) {
+                            return const SizedBox();
+                          }
+
+                          if (snapshot.connectionState ==
+                              ConnectionState.done) {
+                            Map<String, dynamic> data =
+                                snapshot.data!.data() as Map<String, dynamic>;
+                            return SizedBox(
+                              width: maxWidth,
+                              child: LabelMediumBlackBoldText(
+                                text: "${data['NAME']} ${data['SURNAME']}",
+                                textAlign: TextAlign.left,
+                              ),
+                            );
+                          } else {
+                            return const SizedBox();
+                          }
+                        },
                       ),
                     ],
                   ),
