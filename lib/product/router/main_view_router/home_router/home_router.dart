@@ -5,6 +5,7 @@ import 'package:kuaforum/feature/main_view/home/view/search_view/search_view.dar
 import 'package:kuaforum/feature/main_view/home/view/service_detail_view/servicedetail_view.dart';
 import 'package:kuaforum/feature/main_view/home/view/servicecategorys_view/servicecategorys_view.dart';
 import 'package:kuaforum/feature/main_view/home/view/servicecategorys_view/view/servicelist/servicelist_view.dart';
+import 'package:kuaforum/feature/main_view/profile/view/appointmentlist_view/appointmentlist_view.dart';
 import 'package:kuaforum/product/constants/color_constant.dart';
 import 'package:kuaforum/product/widget/text_widget/label_medium_text.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -162,6 +163,16 @@ class HomeRouterService {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  // appointment list view
+  void appointmentListViewNavigatorRouter(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const AppointmentListView(),
       ),
     );
   }

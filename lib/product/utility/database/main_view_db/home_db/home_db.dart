@@ -9,6 +9,7 @@ enum HomeDB {
   SERVICECATEGORY,
   POSTS,
   COMMENTS,
+  APPOINTMENTS,
   BASICSERVICES;
 
   // one time query parameter
@@ -48,6 +49,14 @@ enum HomeDB {
       .where("ACTIVE", isEqualTo: true)
       .where("POPULARITYSTATUS", isEqualTo: true)
       .snapshots();
+
+  Stream<QuerySnapshot> get appointmentUpdateDateList =>
+      FirebaseFirestore.instance
+          .collection(name)
+          .doc(FirebaseService().authID)
+          .collection("LIST")
+          .where("UPDATESTATUS", isEqualTo: true)
+          .snapshots();
 
   Stream<QuerySnapshot> get postList => FirebaseFirestore.instance
       .collection(name)
