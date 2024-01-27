@@ -35,7 +35,8 @@ enum AppLogRegImgsConstant {
 }
 
 enum AppErrorImgConstant {
-  errorImg('undraw_Location_search_re_ttoj');
+  errorImg('undraw_Location_search_re_ttoj'),
+  changeMail('undraw_Mailbox_re_dvds');
 
   final String value;
   const AppErrorImgConstant(this.value);

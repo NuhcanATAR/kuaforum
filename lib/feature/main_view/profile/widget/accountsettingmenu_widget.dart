@@ -15,7 +15,8 @@ class AccountSettingMenuWidget extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       child: GestureDetector(
         onTap: () {
-          routerService.accountSettingViewNavigatorRouter(context);
+          routerService.accountSettingViewNavigatorRouter(
+              context, routerService);
         },
         child: Card(
           child: Padding(

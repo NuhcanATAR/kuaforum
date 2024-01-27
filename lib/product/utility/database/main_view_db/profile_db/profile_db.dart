@@ -9,4 +9,7 @@ enum ProfileDB {
           .collection(name)
           .doc(FirebaseService().authID)
           .get();
+
+  DocumentReference<Map<String, dynamic>> get userRefTable =>
+      FirebaseFirestore.instance.collection(name).doc(FirebaseService().authID);
 }
